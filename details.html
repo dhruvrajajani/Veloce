@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1edec;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7c6ca;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #76777b;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#37485b",
+                      "primary": "#000000",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#d2e4fb",
+                      "on-secondary-container": "#536478",
+                      "on-primary-fixed": "#1b1b1c",
+                      "tertiary": "#000000",
+                      "on-primary-container": "#858384",
+                      "outline": "#76777b",
+                      "on-tertiary-fixed": "#1c1b19",
+                      "on-background": "#1c1b1b",
+                      "on-tertiary-fixed-variant": "#484644",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#474647",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f4f0ef",
+                      "inverse-primary": "#c8c6c7",
+                      "primary-fixed-dim": "#c8c6c7",
+                      "on-surface-variant": "#46474a",
+                      "surface-container-low": "#f7f3f2",
+                      "surface-tint": "#5f5e5f",
+                      "tertiary-fixed-dim": "#cac6c2",
+                      "surface": "#fdf8f8",
+                      "surface-variant": "#e5e2e1",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#cfe1f8",
+                      "surface-container": "#f1edec",
+                      "secondary-fixed-dim": "#b6c8df",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1c1b1b",
+                      "primary-container": "#1b1b1c",
+                      "tertiary-fixed": "#e6e2de",
+                      "surface-bright": "#fdf8f8",
+                      "surface-dim": "#ddd9d9",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#0a1d2d",
+                      "surface-container-highest": "#e5e2e1",
+                      "error": "#ba1a1a",
+                      "background": "#fdf8f8",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#4f6073",
+                      "outline-variant": "#c7c6ca",
+                      "on-tertiary-container": "#868380",
+                      "primary-fixed": "#e5e2e3",
+                      "inverse-surface": "#313030",
+                      "tertiary-container": "#1c1b19",
+                      "surface-container-high": "#ebe7e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="bg-surface dark:bg-surface-container-lowest docked full-width top-0 sticky z-50 shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter text-primary dark:text-primary-fixed" href="#">Veloce</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-body-md text-body-md" href="#">Cars</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Bikes</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Sell</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-4 mr-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">favorite</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">account_circle</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold hover:opacity-90 active:scale-[0.98] transition-all">
+                    List Vehicle
+                </button>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
+<!-- Hero Section: Breadcrumbs & Title -->
+<div class="mb-8">
+<nav class="flex text-on-surface-variant gap-2 mb-4 font-label-sm text-label-sm">
+<a class="hover:text-primary" href="#">Inventory</a>
+<span>/</span>
+<a class="hover:text-primary" href="#">High-End Performance</a>
+<span>/</span>
+<span class="text-primary font-bold">2024 Veloce Apex GT</span>
+</nav>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">2024 Veloce Apex GT</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg mt-2">Limited Edition • Nero Carbonio Metallic • 4.0L V8 Twin-Turbo</p>
+</div>
+<!-- Gallery & Quick Info Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Main Content Area (Column Span 8) -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Large Image Gallery -->
+<section class="space-y-4">
+<div class="relative group aspect-[16/9] overflow-hidden rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700" data-alt="A professional cinematic front three-quarter view of a sleek, modern black supercar parked in a minimalist, brightly lit concrete studio. The lighting is soft and diffused, highlighting the aerodynamic curves and carbon fiber details. The overall aesthetic is premium, high-contrast, and luxurious, with a clean white and soft grey background that emphasizes the car's presence." id="main-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW3_3F935ZDU5BLyZ6Z3S0cwbuWh2aPTe0Q4iBl1tysDZ5sotyDgCmH5MUfyQ7V9qahwdAd7B_v1gclXHrPCWnHFtLGT7ZgyFr3CTBFUeDNsN1f8daDnBOSR_XVBp3VuphYFZmWKXGArNvPMUIra2HOe0kG605RDAPkFEuP8i0Cfu3HXjYreZEflmXrN5T0baFUX0FjvhuQEu3oKg4i3TsXeYEdn1gh3e3Hp2ay1e2cS-oDYGe9Cnx"/>
+<div class="absolute inset-y-0 left-0 flex items-center px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface/80 p-2 rounded-full hover:bg-surface transition-colors shadow-lg" onclick="prevImage()">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+<div class="absolute inset-y-0 right-0 flex items-center px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface/80 p-2 rounded-full hover:bg-surface transition-colors shadow-lg" onclick="nextImage()">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Thumbnails -->
+<div class="grid grid-cols-4 md:grid-cols-6 gap-4">
+<button class="aspect-[16/9] rounded-lg overflow-hidden border-2 border-primary" onclick="setImage(0)">
+<img class="w-full h-full object-cover" data-alt="Close-up side view of a black supercar showing its aerodynamic profile and large carbon ceramic brakes behind forged alloy wheels. Minimalist studio lighting, high-end photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWs9HvZCtjwHURisOvb5KBOHBAl6pw6zQd1ZVM0bHhcS8S5zjRWwz-Wf10bRNgQlL-8bbKMdHns5LyqTyAs14OqPNz_C7V41A2hOjGBPi7AhW60WCpivOWl5S8hfwrVpq2DYx67bcO3aq7e7c-0f86-bAla3iKvmdzUJF2KBlXPK_2vhmP7P-n9AM4tZuZbBsRPi_f8GcEbxV0odyS5QkUHJETTG4_VB-sOvliu0mY0oBvIZ8XByTn"/>
+</button>
+<button class="aspect-[16/9] rounded-lg overflow-hidden border-2 border-transparent hover:border-outline-variant transition-all" onclick="setImage(1)">
+<img class="w-full h-full object-cover" data-alt="Rear three-quarter view of a modern luxury supercar featuring a large carbon fiber rear wing and integrated LED taillights. Studio environment with elegant light-mode shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbY2TRfMCOaYaMyeMfVW9yd1uCIJrIT8AhYaXA88-xdV409F8U6JYSuNuAEIRKsyNyOI0Ci54R6C92E8CmbFYjAdkE9nk6Q6jUC4NIdBn3dihJ0gPGD3lcMSkQjh1GL-MZzdXSQ6FFLJBvi_c4QugZ1g3q1dOMNhJjkEtLuUfgX92VqtXnuF3oAIMV4ThCu8Y7iytpI1RQwVRjcgYz13f9bi9CsZskC35n-JoqWDUs28dpM64Kx6Lm"/>
+</button>
+<button class="aspect-[16/9] rounded-lg overflow-hidden border-2 border-transparent hover:border-outline-variant transition-all" onclick="setImage(2)">
+<img class="w-full h-full object-cover" data-alt="Interior view of a high-end sports car cockpit with Alcantara upholstery, carbon fiber trim, and a digital instrument cluster. Minimalist and technical design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALwpzd6dl7akaAeRHpzJ8JYt0SIDLwEKpoIsuXnLpWOXH2a8KP5wYahp6RSceSts30A2RvDpNBPAliej3fv6HJs_SKwNJpdGYqaupsDHvkhmf0nzgdiP-rj5u4GnzbWze76umDTv0fZMfaIdjeD_5MK0QqJOR0b2bZf94gaj4xKfXmnGUsbU4F9n-vHwS5quxvz8yH5S-DaUczbJG7xI6dI7Oyce4o-rsZNiKf8ImWsTXVWISbijwY"/>
+</button>
+<button class="aspect-[16/9] rounded-lg overflow-hidden border-2 border-transparent hover:border-outline-variant transition-all" onclick="setImage(3)">
+<img class="w-full h-full object-cover" data-alt="Detailed shot of the supercar's engine bay, showing a twin-turbo V8 engine with carbon fiber covers and precision engineering components. Bright, clean museum-like lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABFY5ogGC7lHkimssI8ucJ6gIpZd8q4-hyyGEHj0Nbh9NQwcweYYmOIbRZlFg3YnPjY9IrHWrrS7yQGidBYWe_SAMH_4M2A87r7qdbpieRhgz7_y-zeSpj4KfXL2sky7om_awZ2ciRP0IL4PiSRz2QmoDt_bJrubmvm1sYwkcwnFuIb2ZWmOgjR1OjkDNJ5tJ3426_viJaFRKXUE8S_Hsta2rX6MC5Qu1QPJ_k79eO0xTdHqBGasP5"/>
+</button>
+<button class="hidden md:block aspect-[16/9] rounded-lg overflow-hidden border-2 border-transparent hover:border-outline-variant transition-all" onclick="setImage(4)">
+<img class="w-full h-full object-cover" data-alt="Top down view of a black supercar showing its streamlined bodywork and glass roof panels. Minimalist grey concrete floor, high contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqon7AtZZncR4WtC7c8KBCn3tg07Qw4ttgomaCLi7jRgxRmzDZsEkEsq5HEpxyX_koxSubGdwY4cWiVshEgMgdAcOAEpUY0hZV59cFLSck2-uR4Yum0_22w1sS1g7xG-sraQZMsaGPxA9m8EF1rxMMyI78sv1UFFtCyGLWAijbzGOAeePsj5Bhe8O_OeUOp2jm9Yo5rSTTxAms8Klpu3Hm-RiKMunbTl_fCluELare5bv_If8RfTzm"/>
+</button>
+<button class="hidden md:block relative aspect-[16/9] rounded-lg overflow-hidden border-2 border-transparent hover:border-outline-variant transition-all" onclick="setImage(5)">
+<img class="w-full h-full object-cover opacity-50" data-alt="Close up of the headlight and emblem of a luxury car, reflecting the bright studio lights. Professional product photography, premium minimalist vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVHPXVNUftOYKvHuLAVTg0TSKETDTbcQk17yCXS8RRg2TDph8DQiwUfAWpwrS7X1YODm_7gqDZ2ILkgdQnVmWRyg62QphjZwrbM2C9wRc3q6hFb2fJFnVq2vz5atlRAI-TQMQ0e9XJ4IvO5cinBJOZ9zCc9xeNli7WxInILOGzmWeD1n56P9lleH3zxdl4GX2HXCr6KucAEia9WxOsS85gB_v_3NYjUpR-6monhKzClE5eeqFP7SCC"/>
+<div class="absolute inset-0 flex items-center justify-center text-white font-bold">+12</div>
+</button>
+</div>
+</section>
+<!-- Description Section -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Vehicle Narrative</h2>
+<div class="prose max-w-none text-on-surface-variant font-body-lg text-body-lg leading-relaxed">
+<p>The 2024 Veloce Apex GT represents the pinnacle of modern automotive engineering, blending uncompromising performance with refined luxury. Hand-assembled at our Maranello-inspired facility, this specific chassis is one of only 500 units produced globally, finished in the rare Nero Carbonio Metallic.</p>
+<p>Equipped with the Track-Focus Package, it features enhanced aerodynamics and a lightened chassis. The interior is a masterclass in ergonomics, draped in bespoke charcoal Alcantara with contrasting silver stitching. This vehicle has been maintained by Veloce Certified Technicians since delivery and remains in showroom condition.</p>
+</div>
+</section>
+<!-- Technical Specifications Table -->
+<section class="space-y-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Technical Specifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Engine</span>
+<span class="text-on-surface font-medium">4.0L V8 Twin-Turbo</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Transmission</span>
+<span class="text-on-surface font-medium">7-Speed Dual Clutch</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Power</span>
+<span class="text-on-surface font-medium">720 HP @ 7,500 RPM</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Torque</span>
+<span class="text-on-surface font-medium">568 lb-ft @ 5,500 RPM</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">0-60 MPH</span>
+<span class="text-on-surface font-medium">2.8 Seconds</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Top Speed</span>
+<span class="text-on-surface font-medium">212 MPH</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Drivetrain</span>
+<span class="text-on-surface font-medium">Rear Wheel Drive</span>
+</div>
+<div class="flex justify-between py-4 border-b border-outline-variant">
+<span class="text-on-surface-variant font-semibold">Weight</span>
+<span class="text-on-surface font-medium">3,142 lbs</span>
+</div>
+</div>
+</section>
+<!-- Seller Information -->
+<section class="bg-surface-container-low p-8 rounded-xl space-y-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Seller Information</h2>
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Prestige Motors Group</h3>
+<p class="text-on-surface-variant">Authorized Dealer • Beverly Hills, CA</p>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-2 font-semibold">4.9 (124 Reviews)</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar (Column Span 4) -->
+<aside class="lg:col-span-4 sticky top-28 space-y-6">
+<!-- Transaction Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_8px_30px_rgba(0,0,0,0.08)] border border-outline-variant/30">
+<div class="mb-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest">Fixed Price</span>
+<div class="text-display-lg font-display-lg text-primary mt-1">$349,000</div>
+<p class="text-on-surface-variant mt-2">Financing available from $4,200/mo</p>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                            Buy Now
+                        </button>
+<button class="w-full bg-surface text-primary border border-primary py-4 rounded-lg font-bold text-lg hover:bg-surface-container-low active:scale-[0.98] transition-all">
+                            Contact Seller
+                        </button>
+</div>
+<hr class="my-8 border-outline-variant"/>
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined">verified</span>
+<span>Certified Inspection Report</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined">local_shipping</span>
+<span>Enclosed Nationwide Shipping</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined">gavel</span>
+<span>Escrow Protection Included</span>
+</div>
+</div>
+</div>
+<!-- Quick Specs Widget -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4">
+<h4 class="font-semibold text-primary">Quick Check</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface rounded-lg">
+<p class="text-xs text-on-surface-variant uppercase">Mileage</p>
+<p class="font-bold">1,240 mi</p>
+</div>
+<div class="p-4 bg-surface rounded-lg">
+<p class="text-xs text-on-surface-variant uppercase">Year</p>
+<p class="font-bold">2024</p>
+</div>
+<div class="p-4 bg-surface rounded-lg">
+<p class="text-xs text-on-surface-variant uppercase">Owners</p>
+<p class="font-bold">1</p>
+</div>
+<div class="p-4 bg-surface rounded-lg">
+<p class="text-xs text-on-surface-variant uppercase">Status</p>
+<p class="font-bold text-secondary">Available</p>
+</div>
+</div>
+</div>
+<!-- Action Links -->
+<div class="flex justify-center gap-6 py-2">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+<span class="font-label-sm text-label-sm">Share</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">favorite</span>
+<span class="font-label-sm text-label-sm">Watchlist</span>
+</button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">report</span>
+<span class="font-label-sm text-label-sm">Report</span>
+</button>
+</div>
+</aside>
+</div>
+<!-- Similar Listings Bento Grid -->
+<section class="mt-24 space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg">Similar Acquisitions</h2>
+<p class="text-on-surface-variant mt-2">Curated performance vehicles currently in stock</p>
+</div>
+<button class="text-primary font-bold hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Vehicle Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all">
+<div class="aspect-[16/9] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dynamic shot of a white modern luxury car speeding on a mountain road at sunset. The lighting is warm and golden, casting long shadows. Minimalist and editorial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLH4-Hfbh1PTP1616eS-BVeEcpDRjLNZfx-2SWVZfh0OgYhvy2MulrZPQn7PVVyzx13KRyt6mxxhZnZZxxBwE53bBaxjnBrO3xWMxg6XaTcOycS3BY8tbKjs24d9GJCHhLSQ4RiK1sHo5mTcnt804PoNyIHqCZE4c6-qHgWD2GAtCZd72nw4B7Hftt2qthEQNbpHbeEBUzWlPglMMg9s64zHhoX1AouAWIrrEGzTwx9e887iVsIMyo"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">New</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Veloce Starlight V12</h3>
+<span class="text-xl font-bold">$410,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant font-label-sm text-label-sm uppercase mt-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">calendar_today</span> 2023</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">speed</span> 850 mi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">settings</span> Auto</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all">
+<div class="aspect-[16/9] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A silver grand tourer car parked in front of a modern architectural glass building in Tokyo. Nighttime setting with vibrant neon accents and sharp reflections. High-end, technical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4s22jzQsBPy5_vMqTWy5gWFpV9VX-4tN3n8gL7C1k9nWSPECDLCdNzVUrn5QpRaksPZy8OUA8U9Wbuu_2ocw--ep6M1eKMfzLSDAF2wDGOGWFcNZjXEhaLs_Og8vCNhcvNDpuIttDROwaZiTkiYE1w7u8QJ0Vgl0yyGsPeI5a3VcC-6D3t6X5ZeVE5NpJJlYH2d-ps-jPzyJQJFX5nhMcokwEyU3oL_YOpMQIPtmS4ZiJjlKn_tGx"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Apex Prototype S</h3>
+<span class="text-xl font-bold">$285,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant font-label-sm text-label-sm uppercase mt-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">calendar_today</span> 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">speed</span> 12 mi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">settings</span> Manual</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Card 3 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-all">
+<div class="aspect-[16/9] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A bright blue electric supercar in a dark minimalist garage with overhead neon strip lighting. The focus is on the futuristic lines and glowing LED headlights. Sophisticated and high-tech feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsIs_9u9DPz9zPHPrRe8tqbvfAM1I9CaueJabbeSnkI1WIPDuF9aDoKYnY9oUbI-meJme1XH36wsVQYPag0BXt4lGzeWBckB9S-SqX-32J9gUh7DZRLhkWglR2zyAhjZwOeWNdrcU8WIaVjl3fc-Yd05uTDo2wcRYGxEmozjT3FWfSydwiTpnN5VsXaJtDEo3FWMHNxCWQF8VEeaPsDQGzZ9RF3YPLEQ2_icL2wIWHXanbbSgqh2ZN"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Voltara E-Type</h3>
+<span class="text-xl font-bold">$192,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant font-label-sm text-label-sm uppercase mt-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">calendar_today</span> 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">speed</span> 210 mi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">ev_station</span> Electric</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline mt-16">
+<div class="w-full px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Veloce</span>
+<p class="text-on-surface-variant text-center md:text-left">The world's most exclusive digital showroom for precision-engineered vehicles.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Contact Support</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Buyer Protection</a>
+</div>
+</div>
+<div class="w-full px-margin-mobile md:px-margin-desktop py-6 border-t border-outline-variant/30 text-center">
+<p class="text-on-surface-variant text-sm opacity-60">© 2024 Veloce Automotive Marketplace. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple Gallery Logic
+        const images = [
+            { src: 'placeholder', alt: 'A professional cinematic front three-quarter view of a sleek, modern black supercar parked in a minimalist, brightly lit concrete studio. The lighting is soft and diffused, highlighting the aerodynamic curves and carbon fiber details. The overall aesthetic is premium, high-contrast, and luxurious, with a clean white and soft grey background that emphasizes the car\'s presence.' },
+            { src: 'placeholder', alt: 'Close-up side view of a black supercar showing its aerodynamic profile and large carbon ceramic brakes behind forged alloy wheels. Minimalist studio lighting, high-end photography.' },
+            { src: 'placeholder', alt: 'Rear three-quarter view of a modern luxury supercar featuring a large carbon fiber rear wing and integrated LED taillights. Studio environment with elegant light-mode shadows.' },
+            { src: 'placeholder', alt: 'Interior view of a high-end sports car cockpit with Alcantara upholstery, carbon fiber trim, and a digital instrument cluster. Minimalist and technical design language.' },
+            { src: 'placeholder', alt: 'Detailed shot of the supercar\'s engine bay, showing a twin-turbo V8 engine with carbon fiber covers and precision engineering components. Bright, clean museum-like lighting.' },
+            { src: 'placeholder', alt: 'Top down view of a black supercar showing its streamlined bodywork and glass roof panels. Minimalist grey concrete floor, high contrast lighting.' }
+        ];
+
+        let currentIndex = 0;
+
+        function setImage(index) {
+            currentIndex = index;
+            const mainImg = document.getElementById('main-image');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = images[index].src;
+                mainImg.setAttribute('data-alt', images[index].alt);
+                mainImg.style.opacity = '1';
+            }, 300);
+
+            // Update border on thumbnails
+            const thumbnails = document.querySelectorAll('.grid.grid-cols-4 button');
+            thumbnails.forEach((btn, i) => {
+                if(i === index) {
+                    btn.classList.add('border-primary');
+                    btn.classList.remove('border-transparent');
+                } else {
+                    btn.classList.remove('border-primary');
+                    btn.classList.add('border-transparent');
+                }
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            setImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            setImage(currentIndex);
+        }
+    </script>
+</body></html>

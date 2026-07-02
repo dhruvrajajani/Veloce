@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Browse Vehicles | Veloce Automotive Marketplace</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#313030",
+                    "surface": "#fdf8f8",
+                    "primary-fixed-dim": "#c8c6c7",
+                    "on-tertiary-fixed": "#1c1b19",
+                    "on-surface-variant": "#46474a",
+                    "surface-bright": "#fdf8f8",
+                    "on-primary-fixed": "#1b1b1c",
+                    "on-tertiary-fixed-variant": "#484644",
+                    "outline-variant": "#c7c6ca",
+                    "tertiary-container": "#1c1b19",
+                    "surface-variant": "#e5e2e1",
+                    "on-secondary-container": "#536478",
+                    "background": "#fdf8f8",
+                    "on-secondary-fixed-variant": "#37485b",
+                    "on-secondary-fixed": "#0a1d2d",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f4f0ef",
+                    "outline": "#76777b",
+                    "surface-container-highest": "#e5e2e1",
+                    "secondary-container": "#cfe1f8",
+                    "secondary-fixed-dim": "#b6c8df",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#cac6c2",
+                    "secondary": "#4f6073",
+                    "on-error": "#ffffff",
+                    "tertiary": "#000000",
+                    "surface-tint": "#5f5e5f",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-container": "#868380",
+                    "surface-container-low": "#f7f3f2",
+                    "surface-dim": "#ddd9d9",
+                    "primary-fixed": "#e5e2e3",
+                    "on-primary-container": "#858384",
+                    "surface-container-high": "#ebe7e7",
+                    "secondary-fixed": "#d2e4fb",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed": "#e6e2de",
+                    "primary-container": "#1b1b1c",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#c8c6c7",
+                    "on-primary-fixed-variant": "#474647",
+                    "error-container": "#ffdad6",
+                    "primary": "#000000",
+                    "on-background": "#1c1b1b",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F8F9FA;
+            color: #1c1b1b;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .hover-card-shadow:hover {
+            box-shadow: 0px 8px 30px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-container-lowest docked full-width top-0 sticky z-50 shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter text-primary dark:text-primary-fixed">Veloce</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-body-md text-body-md" href="#">Cars</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Bikes</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Sell</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md p-0 w-48" placeholder="Search marketplace..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container transition-all p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">favorite</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container transition-all p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</button>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold hover:opacity-80 transition-all active:scale-[0.99]">
+                        List Vehicle
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 flex-shrink-0 space-y-8">
+<div class="flex justify-between items-center border-b border-outline-variant pb-4">
+<h2 class="font-headline-md text-headline-md text-primary">Filters</h2>
+<button class="text-label-sm font-label-sm text-secondary hover:text-primary uppercase tracking-wider">Reset All</button>
+</div>
+<!-- Vehicle Type -->
+<section>
+<h3 class="text-body-md font-bold text-primary mb-4">Vehicle Type</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Cars</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Bikes</span>
+</label>
+</div>
+</section>
+<!-- Make -->
+<section>
+<h3 class="text-body-md font-bold text-primary mb-4">Make</h3>
+<div class="space-y-3 max-h-48 overflow-y-auto custom-scrollbar pr-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Porsche</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">BMW</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ducati</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ferrari</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Aston Martin</span>
+</label>
+</div>
+</section>
+<!-- Price Range -->
+<section>
+<h3 class="text-body-md font-bold text-primary mb-4">Price Range</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Min</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="$0" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Max</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="$500k+" type="text"/>
+</div>
+</div>
+</section>
+<!-- Year -->
+<section>
+<h3 class="text-body-md font-bold text-primary mb-4">Year</h3>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-md focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none transition-all">
+<option>Any Year</option>
+<option>2024</option>
+<option>2023</option>
+<option>2022</option>
+<option>2021</option>
+<option>Classic (Pre-1990)</option>
+</select>
+</section>
+</aside>
+<!-- Listing Grid -->
+<section class="flex-grow">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<p class="text-body-lg font-body-lg text-on-surface-variant">Showing <span class="font-bold text-primary">124</span> luxury vehicles</p>
+<div class="flex items-center gap-2">
+<span class="text-body-md text-outline">Sort by:</span>
+<select class="bg-transparent border-none text-primary font-bold focus:ring-0 cursor-pointer">
+<option>Newest Arrivals</option>
+<option>Price: High to Low</option>
+<option>Price: Low to High</option>
+<option>Year: Newest First</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Vehicle Card 1 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 hover-card-shadow">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A side-profile shot of a sleek 2024 Porsche 911 GT3 in shark blue parked in a minimalist, high-end showroom with polished concrete floors and dramatic architectural lighting. The scene is bright and airy with high-key lighting, maintaining a premium museum-like aesthetic. The car’s aerodynamic lines and rear wing are sharp against the soft grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfuIw5xg_xAyONo9w1g63vmpuZMaX_fYmglw6MBbU16j6JYhtYC6lYCcWlg5olM6PgYm8DgWsbaBcUYZEcz2WJT5b7xSbJSeGUn1Hx6ckaYr__ahqbYvPnyRsNiOJsFURgJa_LaRx4YYFO4LNd-5JVwStj4KYpt4g3uSZgL73NYwsXxL6BG0Tbq77mAjN53WSJRxF6qGJs0eJk6GvjoX2STLRAku8FtmjuVwVz9rElpHNH1E_xM0-J"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary text-[10px] font-bold px-3 py-1 uppercase rounded-full tracking-widest">Featured</div>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-white hover:text-primary transition-colors">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">2024 Porsche 911 GT3</h4>
+<p class="text-primary font-bold text-headline-md mb-4">$225,000</p>
+<div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">speed</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">1,250 mi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">settings_input_component</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">PDK</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">local_gas_station</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Petrol</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Vehicle Card 2 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 hover-card-shadow">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A low-angle dynamic shot of a matte black BMW M4 Competition Coupe driving on a winding coastal road at sunset. The warm golden light reflects off the car’s aggressive front grille and carbon fiber details. The overall style is premium editorial automotive photography, emphasizing power and luxury with deep blacks and rich golden highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwBTCYpfvWp3D-HudH8jiPv4xLrrzU2o4MwETHln8VP1ngDf8C9Tb4cj7K_b4n9Hpl-d4E6RJyBcnU-0lK8NWhlmIHIVK0VTmF75bnxT3f9O3S2BTLnTwYC5rtFCc4i1JXI3Ai7qVPLn5IY4FgZ2oQA7NVHS681upwXJPUMTfCjuVqdriqFEb-7rS96CC_98k0gTnho7NlzhWxf0c8xINXQJohHczkIvuTRevWylQRcygckQ-ZkK6y"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-white hover:text-primary transition-colors">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">2023 BMW M4 Competition</h4>
+<p class="text-primary font-bold text-headline-md mb-4">$89,900</p>
+<div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">speed</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">8,400 mi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">settings_input_component</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Auto</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">local_gas_station</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Petrol</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Vehicle Card 3 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 hover-card-shadow">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up of a stunning red Ducati Panigale V4 R motorcycle in a dark studio setting with selective rim lighting. The lighting highlights the red fairings and intricate mechanical components. The aesthetic is extremely clean and high-end, focusing on precision engineering and Italian design. Deep shadows and vibrant red accents create a sophisticated look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDon-0oAcs2bpt9gpYM9HKqvv_sardgXFP3H5Pa58abXm7_0a8MPX_IKD2ic11SdQwNeRFtXvs056kP0eMjNC7kzpT1ZcX0rtqdId57SKjANIFiPD6LwjbMxI6h5YvKB07-UCy2xOV2aigCfYrz8oj_rb3TzUIgG1EJkq-Ywgxx2WR6KyPARvVYKAc0Jprqvnyws9qReOl1H-XbjlqoYLko6CB9v76GF5Mxm7xkUFChLosZfVllTDRZ"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-white hover:text-primary transition-colors">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">2024 Ducati Panigale V4</h4>
+<p class="text-primary font-bold text-headline-md mb-4">$44,500</p>
+<div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">speed</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">0 mi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">settings_input_component</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Manual</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">local_gas_station</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Petrol</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Vehicle Card 4 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 hover-card-shadow">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A modern electric vehicle, Tesla Model S Plaid in midnight silver, charging at a minimalist futuristic charging station at night. The soft blue LED lighting from the station illuminates the car's sleek profile. The mood is calm and technologically forward-looking, with a focus on clean surfaces and advanced energy solutions in a premium setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtl0o9oh-DqbMrwkTTkjFXWUZlOcfAEZQ38yTaIOGRMFXUA3fSt8DUKbPMOVDsI7SDgOegN_Kqfw12gOSkZcoUFot5NtJhCy8ksr59K-SKvBPrmozHhfmmoN0og8FKnyv5dh90NzT9VRD-9HcOPYfM7X7E1x_L26PRy2M5-WnILS0Oaf4IQDhmeomcgKCkB6wpAiJZSTKEZLrUYBQsDnmFCqrfbrBDTcjjxL84K_kFivEyuqF559_9"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-white hover:text-primary transition-colors">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">2024 Tesla Model S Plaid</h4>
+<p class="text-primary font-bold text-headline-md mb-4">$94,990</p>
+<div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">speed</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">150 mi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">settings_input_component</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Direct</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">ev_station</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Electric</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Vehicle Card 5 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 hover-card-shadow">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Classic 1967 Ford Mustang GT Fastback in highland green parked in an old industrial brick warehouse with large windows letting in cinematic dusty light beams. The composition is artistic and nostalgic, emphasizing the timeless muscular design of the American icon. The aesthetic is moody yet clear, with high-quality textures of brick and polished metal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvHgaOgOLFSgyUMRN8hXs0CJtIkGPaV7naGcgLyPET1vXu2bhhh4BogyJ50KJQbS3zHAC-71rYT5WK2FKDqlKieAl-QP5-FBhir6aa9u-5R_KCqIXrh8wqN712a5TREEjvSZJfQJQvj8tei-kGJ8yKmSNd57r5L6QgPoqkNJE6DPypyoHmzuyDxh-LuBN1x_81XmuBDZgKNbUAeyJnDsZfJW8pVunPBTxk7jQhLTcqB5wE1b4hfLS8"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-white hover:text-primary transition-colors">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">1967 Ford Mustang GT</h4>
+<p class="text-primary font-bold text-headline-md mb-4">$145,000</p>
+<div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">speed</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">42,000 mi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">settings_input_component</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Manual</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">local_gas_station</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Petrol</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Vehicle Card 6 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden transition-all duration-300 hover-card-shadow">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A front-quarter view of a white Land Rover Defender 110 V8 on a rocky mountain terrain during a clear day. The bright natural lighting emphasizes the rugged yet refined lines of the SUV. The background features distant snow-capped peaks and a crisp blue sky. The visual style is premium lifestyle adventure photography, conveying durability and high status." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiemdOzCV8zU3-bnbbcG-H6rFw0XPjnktxDjjg3ZxNVMfIdHn5NBysjzplB3RjXfkb2Zpj5BgeCO5tLOwDe_K2QLpniY3rPUaF7Kw5fWrPrUq5vv_XEuTQh4MdUKloh7SGUHs9gOgK3V6WbvEOy8evun2z_uYmuhW9OfIRxlrW7TPj-92Clgl1h38rIZw5GXL9UA51Md8IBAy-OTi6eE8Ud5DhekTwPel-GL9urITLGcoSn87exM0x"/>
+<button class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-white hover:text-primary transition-colors">favorite</span>
+</button>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">2024 Land Rover Defender</h4>
+<p class="text-primary font-bold text-headline-md mb-4">$118,600</p>
+<div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">speed</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">500 mi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">settings_input_component</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Auto</span>
+</div>
+<div class="flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-1 text-[20px]">local_gas_station</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Hybrid</span>
+</div>
+</div>
+<button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]">
+                                View Details
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-primary hover:text-on-primary transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">3</button>
+<span class="w-10 h-10 flex items-center justify-center text-outline">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">12</button>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline full-width mt-16">
+<div class="w-full px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Veloce</span>
+<p class="text-on-surface-variant dark:text-outline text-center md:text-left max-w-xs font-body-md text-body-md">
+                    The world's premier automotive marketplace for luxury, rare, and performance vehicles.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-12">
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Contact Support</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Buyer Protection</a>
+</div>
+<div class="text-on-surface-variant dark:text-outline font-body-md text-body-md text-center md:text-right">
+                © 2024 Veloce Automotive Marketplace. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple filter interaction logic
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                // Here you would normally trigger a grid refresh
+                console.log('Filter applied');
+            });
+        });
+
+        // Hover effects on cards
+        const cards = document.querySelectorAll('.hover-card-shadow');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('scale-[1.01]');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

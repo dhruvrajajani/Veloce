@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Veloce | Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#5f5e5f",
+                      "surface-variant": "#e5e2e1",
+                      "surface": "#fdf8f8",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#cac6c2",
+                      "surface-container": "#f1edec",
+                      "secondary-fixed-dim": "#b6c8df",
+                      "secondary-container": "#cfe1f8",
+                      "on-surface": "#1c1b1b",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#fdf8f8",
+                      "tertiary-fixed": "#e6e2de",
+                      "primary-container": "#1b1b1c",
+                      "surface-dim": "#ddd9d9",
+                      "on-secondary-fixed": "#0a1d2d",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e5e2e1",
+                      "error": "#ba1a1a",
+                      "background": "#fdf8f8",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#e5e2e3",
+                      "on-tertiary-container": "#868380",
+                      "secondary": "#4f6073",
+                      "outline-variant": "#c7c6ca",
+                      "surface-container-high": "#ebe7e7",
+                      "tertiary-container": "#1c1b19",
+                      "inverse-surface": "#313030",
+                      "primary": "#000000",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#37485b",
+                      "secondary-fixed": "#d2e4fb",
+                      "on-secondary-container": "#536478",
+                      "tertiary": "#000000",
+                      "on-primary-fixed": "#1b1b1c",
+                      "outline": "#76777b",
+                      "on-tertiary-fixed": "#1c1b19",
+                      "on-primary-container": "#858384",
+                      "on-background": "#1c1b1b",
+                      "on-tertiary-fixed-variant": "#484644",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#474647",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#c8c6c7",
+                      "inverse-on-surface": "#f4f0ef",
+                      "primary-fixed-dim": "#c8c6c7",
+                      "surface-container-low": "#f7f3f2",
+                      "on-surface-variant": "#46474a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8F9FA;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        .glass-sidebar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .admin-table-row:hover {
+            background-color: #F9FAFB;
+        }
+    </style>
+</head>
+<body class="bg-surface">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-72 glass-sidebar flex flex-col z-50">
+<div class="px-8 py-10 flex items-center gap-3">
+<span class="font-display-lg text-display-lg tracking-tighter text-primary">Veloce</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4 custom-scrollbar overflow-y-auto">
+<a class="flex items-center gap-4 px-4 py-3 bg-primary text-on-primary rounded-lg shadow-md transition-all group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md font-semibold">Overview</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">group</span>
+<span class="font-body-md text-body-md">User Management</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-md text-body-md">Listing Approvals</span>
+<span class="ml-auto bg-primary-container text-on-primary-container text-[10px] px-2 py-0.5 rounded-full font-bold">12</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">receipt_long</span>
+<span class="font-body-md text-body-md">Transaction History</span>
+</a>
+<div class="pt-8 pb-2 px-4">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline">System</p>
+</div>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="font-body-md text-body-md">System Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">
+                        JD
+                    </div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">James Dalton</p>
+<p class="text-[12px] text-on-surface-variant">Chief Administrator</p>
+</div>
+<button class="ml-auto text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col relative overflow-hidden">
+<!-- Top App Bar Content -->
+<header class="flex justify-between items-center w-full px-margin-desktop py-6 bg-surface shadow-[0px_4px_20px_rgba(0,0,0,0.02)] z-10">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Marketplace Console</h1>
+<p class="text-on-surface-variant font-body-md text-body-md opacity-70">Global Operations &amp; Intelligence</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full w-64 focus:ring-2 focus:ring-primary/10 font-body-md text-body-md transition-all" placeholder="Search entries..." type="text"/>
+</div>
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<section class="flex-1 overflow-y-auto px-margin-desktop py-10 custom-scrollbar">
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-12">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed">group</span>
+</div>
+<span class="text-[12px] font-bold text-success flex items-center text-[#16a34a]">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>+12.5%
+                            </span>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-1">Total Users</p>
+<h3 class="font-display-lg text-[32px] text-on-surface">42,892</h3>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">directions_car</span>
+</div>
+<span class="text-[12px] font-bold text-success flex items-center text-[#16a34a]">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>+4.2%
+                            </span>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-1">Active Listings</p>
+<h3 class="font-display-lg text-[32px] text-on-surface">1,248</h3>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)] transition-shadow border-2 border-primary-container/5">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+<span class="text-[12px] font-bold text-error flex items-center text-error">
+                                Priority
+                            </span>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-1">Pending Approvals</p>
+<h3 class="font-display-lg text-[32px] text-on-surface">12</h3>
+</div>
+<div class="bg-primary p-8 rounded-xl shadow-xl hover:translate-y-[-4px] transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white">payments</span>
+</div>
+<span class="text-[12px] font-bold text-white/70 flex items-center">
+                                MTD
+                            </span>
+</div>
+<p class="text-white/60 font-label-sm text-label-sm uppercase tracking-widest mb-1">Gross Revenue</p>
+<h3 class="font-display-lg text-[32px] text-white">$142,800</h3>
+</div>
+</div>
+<!-- Listing Approvals Table -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden border border-outline-variant/30">
+<div class="px-8 py-6 border-b border-outline-variant/30 flex justify-between items-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Listing Approvals</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">High-value inventory waiting for authentication</p>
+</div>
+<button class="bg-surface-container-low text-on-surface px-6 py-2 rounded-full font-semibold hover:bg-surface-container-high transition-colors">
+                            View All Requests
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest text-outline">Vehicle</th>
+<th class="px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest text-outline">Seller</th>
+<th class="px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest text-outline">Requested Price</th>
+<th class="px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest text-outline">Status</th>
+<th class="px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest text-outline text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="admin-table-row transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-10 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio photograph of a sleek 2024 matte black supercar with low-profile tires and carbon fiber detailing. The lighting is high-contrast and dramatic, highlighting the aerodynamic curves of the vehicle against a minimalist white background. The style is premium automotive editorial, emphasizing precision engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBzSQmL0k1gJRxJ7zbk2pYbFV1P82FmHZkx5s2u-leEJYUEjH5VR0s4q3D28ptdoPcbW6GjqDs4LoD6iThKIHM6rv-CLWojfPIV1jDRfWdR--AHzFXwsoL0HSYM74WKfJVtNzXD4GIXnTxDWQubEyarFEuMs61HlaZoglPdsKTQmW9_Y2ixRbgd_FyKVzoFYrGInrl_1QKx0IskyCkL-WW_xIxbuKUB9UR20_mpNyaHEL6SlYBYavt"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">2024 Porsche 911 GT3 RS</p>
+<p class="text-[12px] text-outline">Vin: WP0AB2A90RS...</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-on-surface font-medium">Stuttgart Motors Inc.</p>
+<p class="text-[12px] text-outline">Gold Verified Seller</p>
+</td>
+<td class="px-8 py-6">
+<p class="text-on-surface font-bold font-headline-md text-[18px]">$342,000</p>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-green-50 text-[#16a34a] rounded-lg transition-colors" title="Approve">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-2 hover:bg-red-50 text-error rounded-lg transition-colors" title="Reject">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="admin-table-row transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-10 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A side-profile shot of a vintage 1967 classic muscle car in deep cherry red, restored to museum quality. The car sits in a brightly lit modern garage with polished concrete floors and minimalist gray walls. Soft, diffused lighting captures the chrome reflections and pristine paint finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ6zwJjMnnKAmsI1vaoSGXrSeZUa1T9lTLpk4c-PaBSlHVyuaHIvSYyXgSh-VmOvuiv8sQK4X2hRnu3WTfgif-LSgFdKuL0fDAB_puOWKh-50BkfU1gAN_Rc4DxXX5GiihOPctUyn2ac-Qz0eWqDAGf-LmiFLB_eua4P3oTCR6SwmjGJbGRk_Qyx8Dd6I6vG9GRGukk11zp1PIoPR8gOQt296LiYtUlRdGObn_lTCxqpyVW4B42iAT"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">1967 Mustang Shelby GT500</p>
+<p class="text-[12px] text-outline">Vin: 7R02Z123456...</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-on-surface font-medium">Classic Vault Ltd.</p>
+<p class="text-[12px] text-outline">Elite Collector</p>
+</td>
+<td class="px-8 py-6">
+<p class="text-on-surface font-bold font-headline-md text-[18px]">$215,500</p>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-green-50 text-[#16a34a] rounded-lg transition-colors">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-2 hover:bg-red-50 text-error rounded-lg transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="admin-table-row transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-10 rounded bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A front-facing view of a futuristic electric luxury sedan in metallic silver, parked in a minimalist city plaza at dusk. The vehicle's LED headlights are glowing softly against the blue hour light. The architecture in the background is sleek and modern, composed of glass and steel with clean geometric lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3mSldi61CPIHl-FR_q5kCfUmgJDzl45rw2mVUwfO3z1t7M9l3MWePlKUs7uAA92fUoPUDCT_aZTplzTgkEIqeAXq1ST70rpQtURuxUeXTQfeGi1FsCLwCToPNux4UYY-DqmZPWB8wEUYoqIszBbMAw5rCLDXKfVeklivEoeMFSFCLpmJn77CfDNUvfsloLTQ5YD9E0hJvfClN8xu3DIhAkXg7WRJHDlkRSFECmxNgzpIIKidin9dm"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">2023 Lucid Air Sapphire</p>
+<p class="text-[12px] text-outline">Vin: LAC882109X...</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<p class="text-on-surface font-medium">Urban Volt</p>
+<p class="text-[12px] text-outline">Standard Individual</p>
+</td>
+<td class="px-8 py-6">
+<p class="text-on-surface font-bold font-headline-md text-[18px]">$249,000</p>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-green-50 text-[#16a34a] rounded-lg transition-colors">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-2 hover:bg-red-50 text-error rounded-lg transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Section (Integrated) -->
+<footer class="mt-16 pt-12 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-8 text-on-surface-variant font-body-md text-body-md">
+<p>© 2024 Veloce Automotive Marketplace. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</section>
+</main>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple hover effect for KPI cards
+        document.querySelectorAll('.kpi-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('scale-[1.02]');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[1.02]');
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-105');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-105');
+        });
+    </script>
+</body></html>
