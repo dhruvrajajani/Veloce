@@ -1,41 +1,32 @@
 const express = require('express');
+const notemodle = require('/workspaces/Veloce/src/model/note.model');
 
 const app = express();
-app.use(express.json());
-const list =[];
+app.use(express.json())
 
-app.get('/',(req,res)=>{
-    res.send('Home page');
-})
-
-app.post('/list',(req,res)=>{
-    console.log(req.body);
-    list.push(req.body);
-    res.status(200).json({
-        message: 'Item added to list',
-        data: req.body
+app.post('/notes',async (req,res)=>{
+    await notemodle.create({
+        Tittle:req.body.tittle,
+        Description:req.body.description
     })
+    res.status(200).jason("Created Successfully.")
 })
-app.get('/list',(req,res)=>{
-    res.send(list);
+app.get('/notes',async (req,res)=>{
+    const Show = await notemodle.find();
+    res.status(200).jason(show);
 })
-app.delete('/list/:index',(req,res)=>{
-    const index = req.params.index;
-    delete list[index-1];
-    res.status(200).json({
-        message: 'Item removed from list'
-    });
+app.get('/notes/:id',async (req,res)=>{
+    const Show = await notemodle.findById(req.params.id);
+    //notemodle.findOne({_id:req.params.id});
+    res.status(200).jason(show);
 })
-app.patch('/list/:index',(req,res)=>{
-    const index = req.params.index
-    const branch = req.body.branch;
-    list[index-1].branch = branch;
-    res.status(200).json({
-        message: 'Item updated in list',
-        data: req.body
-    });
-    console.log(list);
+app.delete('/notes',async (req,res)=>{
+    const show = await notemodle.findByIdAndDelete(req.params.id);
+    //notemodle.findOneAndDelete({_id:req.params.id});
+    res.status(200).jason(show);
 })
-
-
-module.exports = app;
+app.patch('/notes/:id',async (req,res)=>{
+    const note = await notemodle.findByIdAndUpdate(req.params.id,{Description:req.body.Description});
+    res.status(200).jason(note,"Updated Successfully")
+})
+module.exports=app;
